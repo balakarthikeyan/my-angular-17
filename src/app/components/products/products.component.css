@@ -1,0 +1,5 @@
+.products { position: relative; }
+.tooltip {
+    position: absolute;
+    border: 1px solid #000;
+}

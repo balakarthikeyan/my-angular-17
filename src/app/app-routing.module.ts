@@ -13,9 +13,13 @@ import { HttpExampleComponent } from './workout/http-example/http-example.compon
 import { LocalStorageExampleComponent } from './workout/local-storage-example/local-storage-example.component';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 import { ChildComponent } from './workout/child/child.component';
+import { DirectiveExampleComponent } from './workout/directive-example/directive-example.component';
+import { StandardFormComponent } from './workout/standard-form/standard-form.component';
+import { ObservablesExampleComponent } from './workout/observables-example/observables-example.component';
+import { ParentComponent } from './workout/parent/parent.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'list'},
+  { path: '', pathMatch: 'full', redirectTo: 'home'},
   { path: 'list', component: CustomerListComponent},
   { path: 'details/:id', component: CustomerDetailsComponent},
   { path: 'create', component: CustomerCreateComponent},
@@ -23,11 +27,15 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'todo', component: TodosListComponent},
   { path: 'articles', component: ArticleListComponent},
+  { path: 'parent', component: ParentComponent},
   { path: 'child', component: ChildComponent},
   { path: 'products', component: ProductsComponent},
   { path: 'http-example', component: HttpExampleComponent},
   { path: 'local-storage', component: LocalStorageExampleComponent},
-  { path: 'forms', component: DynamicFormComponent},
+  { path: 'standard-forms', component: StandardFormComponent},
+  { path: 'dynamic-forms', component: DynamicFormComponent},
+  { path: 'directive', component: DirectiveExampleComponent},
+  { path: 'observables', component: ObservablesExampleComponent}
 ];
 
 @NgModule({

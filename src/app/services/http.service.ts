@@ -3,6 +3,7 @@ import { Observable, catchError, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { HttpParams } from "@angular/common/http";
 import { Customer } from '../models/customer';
+import { Post } from '../interfaces/post';
 
 @Injectable({
     providedIn: 'root'
@@ -14,13 +15,13 @@ export class HttpService {
 
     constructor(private httpClient: HttpClient) { }
 
-    getCustomParamData(): Observable<any> {
+    getCustomParamData(): Observable<Post[]> {
         const headers = new HttpHeaders().set("X-CustomHttpHeader", "CUSTOM_VALUE");
         const params = new HttpParams().set('_page', "1").set('_limit', "10");
-        return this.httpClient.get<any[]>(`${this.apiUrl}/posts`, { params, headers },);
+        return this.httpClient.get<Post[]>(`${this.apiUrl}/posts`, { params, headers },);
 
         // const params = new HttpParams({ fromString: '_page=1&_limit=5' });
-        // return this.httpClient.request<any[]>("GET", `${this.apiUrl}/posts`, { responseType: "json", params });
+        // return this.httpClient.request<Post[]>("GET", `${this.apiUrl}/posts`, { responseType: "json", params });
     }
 
     // Method to fetch JSON data

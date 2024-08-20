@@ -1,14 +1,19 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 import { HttpService } from 'src/app/services/http.service';
 
 @Component({
     selector: 'app-http-example',
     standalone: true,
-    imports: [],
+    imports: [CommonModule, FormsModule, ReactiveFormsModule, NgxSpinnerModule],
     templateUrl: './http-example.component.html',
     styleUrl: './http-example.component.css'
 })
 export class HttpExampleComponent implements OnInit {
+
+    typeSelected: string;
 
     newPost = {
         title: 'New Post',
@@ -17,7 +22,10 @@ export class HttpExampleComponent implements OnInit {
 
     constructor(
         private httpService: HttpService,
-    ) { }
+        private spinnerService: NgxSpinnerService,
+    ) {
+        this.typeSelected = 'fire';
+    }
 
     ngOnInit(): void {
 
@@ -53,4 +61,11 @@ export class HttpExampleComponent implements OnInit {
         });
     }
 
+    public showSpinner(): void {
+        this.spinnerService.show();
+
+        setTimeout(() => {
+            this.spinnerService.hide();
+        }, 5000); // 5 seconds
+    }
 }

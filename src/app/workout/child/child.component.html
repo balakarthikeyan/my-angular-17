@@ -1,2 +1,5 @@
-<p>child works!</p>
-<app-parent [username]=username (myEvent)="handleEvent($event)">This is from Child Companent</app-parent>
+<h1>Shared Data {{receivedData}}</h1>
+<h1>Input</h1>
+<app-parent [username]=username></app-parent>
+<h1>Output</h1>
+<app-parent [username]=username (myEvent)="handleEvent($event)" />

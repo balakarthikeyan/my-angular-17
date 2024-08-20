@@ -1,0 +1,20 @@
+<h1>Custom Structural Directive Example</h1>
+<div *appCustomStructural="isVisible">Custom Structural Directive Example</div>
+
+<h1>Custom Attribute Directive Example</h1>
+<div appCustomAttribute="dynamicColor">Custom Attribute Directive Example</div>
+
+<h1>Custom User Initiated Events</h1>
+<button appCustomEvent>Custom User Initiated Events Directive</button>
+
+<h1>Output Event Directive</h1>
+<input type="password" appPasswordStrength (strengthChange)="changeStrength($event)">
+<div>
+    @if (passwordStrength) {
+    Password Strength: {{ passwordStrength }}
+    }
+</div>
+
+<h1>Input & HostListener Directive</h1>
+<input type="text" appRestrictedChars (restrictedChars)="restrictedChars" />
+

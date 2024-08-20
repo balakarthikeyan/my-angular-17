@@ -1,22 +1,31 @@
-<p>products works!</p>
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+<!-- eslint-disable @angular-eslint/template/mouse-events-have-key-events -->
+<h1>Component has used Currency, Slice Pipe, Dependency Injection using inject and signal, computed, effect, toSignal</h1>
+
+<!--Product Favorites-->
 <div class="favorites">
     @for (product of $favorites(); track product.id) {
     <img [src]="product.image" alt="thumb_img" width="50" height="50" />
     }
     <span (click)="clearFavorites()">🗑</span>
 </div>
+
+<!--Product Search-->
 <div class="search">
     <h3>Search by Product Name </h3>
     <input #filter (input)="updateFilter(filter.value)">
 </div>
+
+<!--Product List-->
 @for (product of $products(); track product.id) {
-<div>
+<div class="products">
     <img [src]="product.image" alt="cover_img" width="250" height="250" />
     <div>
-        <h4>{{ product.title }}</h4>
+        <h4><a (mouseover)="onHover($event, product.title)">{{ product.title }}</a></h4>
         <hr />
         <p>
-            {{ product.description }}
+            {{ product.description | slice:0:150 }}<span *ngIf="product.description.length >= 150">...</span>
         </p>
     </div>
     <div>
@@ -27,3 +36,8 @@
 } @empty {
 <h2> No products! 😌</h2>
 }
+
+<!--Tooltip-->
+<div *ngIf="showsTooltip" [style.top]="tooltipTopY" [style.left]="tooltipLeftX" class="tooltip">
+    {{ tooltipText }}
+</div>

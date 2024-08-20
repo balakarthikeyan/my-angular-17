@@ -1,4 +1,4 @@
-import { CurrencyPipe } from '@angular/common';
+import { CommonModule, CurrencyPipe, SlicePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, computed, effect, inject, signal } from '@angular/core';
 import { Product } from 'src/app/interfaces/product';
@@ -7,7 +7,7 @@ import { toSignal } from "@angular/core/rxjs-interop";
 @Component({
     selector: 'app-products',
     standalone: true,
-    imports: [CurrencyPipe],
+    imports: [CommonModule, CurrencyPipe, SlicePipe],
     templateUrl: './products.component.html',
     styleUrl: './products.component.css'
 })
@@ -15,6 +15,12 @@ export class ProductsComponent {
     http = inject(HttpClient);
     $searchFilter = signal<string>('');
     $favorites = signal<Product[]>([]);
+
+    // Properties
+    showsTooltip = true; // show or not
+    tooltipText = ''; // text to be binded
+    tooltipTopY!: any;
+    tooltipLeftX!: any;
 
     constructor() {
         effect(() => {
@@ -45,5 +51,15 @@ export class ProductsComponent {
     updateFilter(filter: string) {
         const filterValue = filter.length > 3 ? filter : '';
         this.$searchFilter.set(filterValue);
+    }
+
+    // Methods
+    onHover(event: any, itemName: string): void {
+        this.tooltipText = itemName;
+        if (event) {
+            this.showsTooltip = true;
+            this.tooltipTopY = event.clientY + 'px';
+            this.tooltipLeftX = event.clientX + 'px';
+        }
     }
 }

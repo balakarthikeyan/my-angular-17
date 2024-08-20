@@ -1,1 +1,17 @@
 <p>http-example works!</p>
+<div class="container-fluid">
+    <h1>Angular Spinner</h1>
+    <select name="type" #type="ngModel" [(ngModel)]="typeSelected" required
+        [class.is-invalid]="type.invalid && (type.dirty || type.touched)" class="form-select form-select-sm">
+        <option value="ball-atom">Ball Atom</option>
+        <option value="ball-beat">Ball Beat</option>
+        <option value="timer">Timer</option>
+        <option value="fire">Fire</option>
+        <option value="pacman">Pacman</option>
+    </select>
+    <div *ngIf="type.invalid && (type.dirty || type.touched)" class="invalid-feedback">
+        <div *ngIf="type.errors?.['required']">This field is required.</div>
+    </div>
+    <button type="button" class="btn btn-sm btn-primary" (click)="showSpinner()">Show Spinner</button>
+</div>
+<ngx-spinner size="medium" [type]="typeSelected"></ngx-spinner>

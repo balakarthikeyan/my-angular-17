@@ -1,0 +1,8 @@
+<p>observables-example works!</p>
+
+<p>Observable 3 value: {{obs3$ | async}}</p>
+
+<!-- Pro Tip -->
+<ng-container *ngIf="obs3$ | async as val1">
+    <p>Observable 1 value: {{val1}}</p>
+</ng-container>

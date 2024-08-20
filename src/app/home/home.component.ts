@@ -1,10 +1,10 @@
-import { Component, AfterContentInit, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
-import { Subject, takeUntil } from 'rxjs';
+import { Component, AfterContentInit, OnInit, AfterViewInit } from '@angular/core';
 import { HttpService } from '../services/http.service';
 import { SharedService } from '../services/shared.service';
 import { CommonModule } from '@angular/common';
 import { CourseCardComponent } from '../components/course-card/course-card.component';
 import { Course } from '../interfaces/course';
+import { Post } from '../interfaces/post';
 
 @Component({
     selector: 'app-home',
@@ -14,11 +14,12 @@ import { Course } from '../interfaces/course';
     styleUrl: './home.component.css'
 })
 
-export class HomeComponent implements AfterContentInit, OnInit, AfterViewInit, OnDestroy {
+export class HomeComponent implements AfterContentInit, OnInit, AfterViewInit {
 
-    receivedData: string = '';
-    unsubscribe = new Subject<void>();
-    posts: any = [];
+    textColor: string = 'white';
+    fontSize: string = '16px';
+
+    posts: Post[] = [];
     users: any = [];
 
     user = {
@@ -74,11 +75,7 @@ export class HomeComponent implements AfterContentInit, OnInit, AfterViewInit, O
 
     ngOnInit(): void {
 
-        this.sharedService.getData$().pipe(takeUntil(this.unsubscribe)).subscribe(data => {
-            this.receivedData = data;
-        });
-
-        this.posts = this.httpService.getCustomParamData().subscribe({
+        this.httpService.getCustomParamData().subscribe({
             next: posts => {
                 console.log(posts);
                 this.posts = posts;
@@ -93,21 +90,15 @@ export class HomeComponent implements AfterContentInit, OnInit, AfterViewInit, O
     }
 
     // Initialize third-party content formatting
+    // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
     ngAfterContentInit(): void { }
 
     // Runs after the component view
+    // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
     ngAfterViewInit(): void { }
-
-    sendData(): void {
-        this.sharedService.setData('Hello, Component B!');
-    }
 
     trackByFn(index: number, item: any): number {
         return item.id;
     }
 
-    ngOnDestroy() {
-        this.unsubscribe.next();
-        this.unsubscribe.complete();
-    }
 }

@@ -73,3 +73,9 @@
     font-size: 16px;
     color: #333;
 }
+.odd {
+    background-color: #ddd;
+}
+.even {
+    background-color: #a8a8a8;
+}

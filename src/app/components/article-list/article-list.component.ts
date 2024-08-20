@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Article } from 'src/app/interfaces/article';
 import { ArticleService } from 'src/app/services/article.service';
 import { ArticleComponent } from '../article/article.component';
@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 	templateUrl: './article-list.component.html',
 	styleUrl: './article-list.component.css'
 })
-export class ArticleListComponent {
+export class ArticleListComponent implements OnInit {
 	articles: Article[] = [];
 
 	constructor(

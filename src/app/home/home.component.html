@@ -8,7 +8,7 @@
         </ul>
         <!-- For Directive -->
         <h2>For</h2>
-        <ul>
+        <ul [ngStyle]="{ 'color': textColor, 'font-size': fontSize }">
             @for (post of posts; track post; let index = $index; let first = $first, last = $last) {
             <li [ngClass]="{ odd: index % 2 !== 0, even: index % 2 === 0 }">
                 {{index}} - {{post.title}}

@@ -14,7 +14,6 @@ import { DynamicFieldComponent } from '../dynamic-field/dynamic-field.component'
 })
 export class DynamicFormComponent {
 
-	loginForm!: FormGroup;
 	registerForm!: FormGroup;
 	fields: any = [];
 	model = {
@@ -135,33 +134,10 @@ export class DynamicFormComponent {
 		private formBuilder: FormBuilder,
 		private router: Router
 	) {
-		this.buildForm();
-		this.buildLoginForm();
-		this.registerForm.controls['firstname'].valueChanges.subscribe((v) => {
-			console.log(v);
+		this.buildRegisterForm();
+		this.registerForm.controls['firstname'].valueChanges.subscribe((value) => {
+			console.log("From DynamicFormComponent", value);
 		});
-	}
-
-	buildRegisterForm() {
-		this.registerForm = new FormGroup({
-			name: new FormControl(''),
-			lastName: new FormControl(''),
-			age: new FormControl(''),
-		});
-	}
-
-	buildLoginForm() {
-		this.loginForm = this.formBuilder.group({
-			email: ['', Validators.required],
-			password: ['', Validators.required]
-		});
-	}
-
-	login() {
-		const val = this.loginForm.value;
-		if (val.email && val.password) {
-			console.log(val.email, val.password, "User is logged in");
-		}
 	}
 
 	getFormControlsFields() {
@@ -175,7 +151,7 @@ export class DynamicFormComponent {
 		return formGroupFields;
 	}
 
-	buildForm() {
+	buildRegisterForm() {
 		const formGroupFields = this.getFormControlsFields();
 		this.registerForm = new FormGroup(formGroupFields);
 	}
