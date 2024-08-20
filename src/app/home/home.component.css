@@ -1,13 +1,5 @@
-.container {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
 .header-container {
     text-align: center;
-    padding: 20px 0;
-
 }
 
 .banner {
@@ -19,7 +11,6 @@
 
 .promotion {
     background-color: #fff;
-    padding: 20px 0;
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
 }
@@ -73,9 +64,11 @@
     font-size: 16px;
     color: #333;
 }
+
 .odd {
     background-color: #ddd;
 }
+
 .even {
     background-color: #a8a8a8;
 }

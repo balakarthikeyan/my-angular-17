@@ -1,0 +1,12 @@
+<select (change)="onChange()" [(ngModel)]="activeLocale">
+    <option *ngFor="let locale of locales" [value]="locale.code">
+        {{ locale.name }}
+    </option>
+</select>
+
+<div class="btn-group btn-group-sm py-5">
+    <button type="button" class="btn btn-sm btn-outline-secondary" (click)="changeLanguage('en-US')"
+        [class.active]="translateService.currentLang !== 'ru-RU'">English</button>
+    <button type="button" class="btn btn-sm btn-outline-secondary" (click)="changeLanguage('ru-RU')"
+        [class.active]="translateService.currentLang === 'ru-RU'">Russian</button>
+</div>

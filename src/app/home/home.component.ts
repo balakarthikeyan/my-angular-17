@@ -5,11 +5,12 @@ import { CommonModule } from '@angular/common';
 import { CourseCardComponent } from '../components/course-card/course-card.component';
 import { Course } from '../interfaces/course';
 import { Post } from '../interfaces/post';
+import { LocaleSwitcherComponent } from '../components/locale-switcher/locale-switcher.component';
 
 @Component({
     selector: 'app-home',
     standalone: true,
-    imports: [CommonModule, CourseCardComponent],
+    imports: [CommonModule, CourseCardComponent, LocaleSwitcherComponent],
     templateUrl: './home.component.html',
     styleUrl: './home.component.css'
 })

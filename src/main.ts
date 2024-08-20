@@ -1,3 +1,5 @@
+/// <reference types="@angular/localize" />
+
 import { VERSION as CDK_VERSION } from '@angular/cdk';
 import { VERSION as MAT_VERSION } from '@angular/material/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';

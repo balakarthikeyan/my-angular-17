@@ -1,28 +1,35 @@
-<p>app works!</p>
 <div class="container">
     <header>
         <div class="header-container">
-            <img src="https://via.placeholder.com/1200x100/66b7d2" alt="Robot Parts Banner" class="banner">
+            <img src="https://via.placeholder.com/1296x100/66b7d2" alt="Robot Parts Banner" class="banner">
         </div>
     </header>
-    <nav>
-        <ul>
-            <li><a routerLink="home" routerLinkActive="active">Home</a></li>
-            <li><a routerLink="todo" routerLinkActive="active">Todo</a></li>
-            <li><a routerLink="articles" routerLinkActive="active">Articles</a></li>
-            <li><a routerLink="parent" routerLinkActive="active">Parent</a></li>
-            <li><a routerLink="child" routerLinkActive="active">Child</a></li>
-            <li><a routerLink="products" routerLinkActive="active">Products</a></li>
-            <li><a routerLink="http-example" routerLinkActive="active">Http Example</a></li>
-            <li><a routerLink="local-storage" routerLinkActive="active">Local Storage</a></li>
-            <li><a routerLink="standard-forms" routerLinkActive="active">Standard Form</a></li>
-            <li><a routerLink="dynamic-forms" routerLinkActive="active">Dynamic Form</a></li>
-            <li><a routerLink="directive" routerLinkActive="active">Directive</a></li>
-            <li><a routerLink="observables" routerLinkActive="active">Observables</a></li>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" routerLink="home" routerLinkActive="active">Home</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="todo" routerLinkActive="active">Todo</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="articles" routerLinkActive="active">Articles</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="parent" routerLinkActive="active">Parent</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="child" routerLinkActive="active">Child</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="products" routerLinkActive="active">Products</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="http-example" routerLinkActive="active">Http Example</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="local-storage" routerLinkActive="active">Local Storage</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="standard-forms" routerLinkActive="active">Standard Form</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="dynamic-forms" routerLinkActive="active">Dynamic Form</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="directive" routerLinkActive="active">Directive</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="observables" routerLinkActive="active">Observables</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="bootstrap" routerLinkActive="active">Bootstrap</a></li>
         </ul>
     </nav>
+    <h1 i18n>Hello world!</h1>
+    <h1 i18n="Friendly welcoming message">Hello our world!!</h1>
+    <h1 i18n="Main Header|Friendly welcoming message@@introductionHeader">Hello my world!!!</h1>
+    <p>
+        <a i18n i18n-href i18n-title href="en-US/todo" title="My Portfolio">Portfolio</a>
+    </p>
+    <p>{{ "welcome" | translate }}</p>
 </div>
 <router-outlet></router-outlet>
-<ngx-spinner bdColor="rgba(1,1,1,0.3)" type="ball-beat">
-    <p style="color: black">Loading...</p>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="large" color="#fff" type="ball-beat" [fullScreen]="true">
+    <p style="color: white"> Loading... </p>
 </ngx-spinner>

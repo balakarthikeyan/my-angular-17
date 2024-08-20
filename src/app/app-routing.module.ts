@@ -17,6 +17,7 @@ import { DirectiveExampleComponent } from './workout/directive-example/directive
 import { StandardFormComponent } from './workout/standard-form/standard-form.component';
 import { ObservablesExampleComponent } from './workout/observables-example/observables-example.component';
 import { ParentComponent } from './workout/parent/parent.component';
+import { BootstrapExampleComponent } from './workout/bootstrap-example/bootstrap-example.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -35,7 +36,8 @@ const routes: Routes = [
   { path: 'standard-forms', component: StandardFormComponent},
   { path: 'dynamic-forms', component: DynamicFormComponent},
   { path: 'directive', component: DirectiveExampleComponent},
-  { path: 'observables', component: ObservablesExampleComponent}
+  { path: 'observables', component: ObservablesExampleComponent},
+  { path: 'bootstrap', component: BootstrapExampleComponent},
 ];
 
 @NgModule({
