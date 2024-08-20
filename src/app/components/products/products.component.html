@@ -1,0 +1,29 @@
+<p>products works!</p>
+<div class="favorites">
+    @for (product of $favorites(); track product.id) {
+    <img [src]="product.image" alt="thumb_img" width="50" height="50" />
+    }
+    <span (click)="clearFavorites()">🗑</span>
+</div>
+<div class="search">
+    <h3>Search by Product Name </h3>
+    <input #filter (input)="updateFilter(filter.value)">
+</div>
+@for (product of $products(); track product.id) {
+<div>
+    <img [src]="product.image" alt="cover_img" width="250" height="250" />
+    <div>
+        <h4>{{ product.title }}</h4>
+        <hr />
+        <p>
+            {{ product.description }}
+        </p>
+    </div>
+    <div>
+        <span>Price {{ product.price | currency }}</span>
+        <span (click)="addFavorite(product)">❤</span>
+    </div>
+</div>
+} @empty {
+<h2> No products! 😌</h2>
+}

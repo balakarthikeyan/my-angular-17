@@ -1,0 +1,26 @@
+<p>dynamic-form works!</p>
+<h1>Register</h1>
+
+
+<form [formGroup]="registerForm">
+    <div *ngFor="let field of fields">
+        <app-dynamic-field [field]="field"></app-dynamic-field>
+        <app-dynamic-error [fieldName]="field.fieldName"></app-dynamic-error>
+    </div>
+    <button class="button button-primary" (click)="onSubmit()">Register</button>
+</form>
+
+<form [formGroup]="loginForm">
+    <fieldset>
+        <legend>Login</legend>
+        <div class="form-field">
+            <input name="email" formControlName="email">
+        </div>
+        <div class="form-field">
+            <input name="password" formControlName="password" type="password">
+        </div>
+    </fieldset>
+    <div class="form-buttons">
+        <button class="button button-primary" (click)="login()">Login</button>
+    </div>
+</form>

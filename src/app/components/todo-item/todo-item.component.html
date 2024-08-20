@@ -1,0 +1,6 @@
+<p>todo-item works!</p>
+<div>
+    <input type="checkbox" [checked]="completed" (change)="handleCompletitionChange(id)" />
+    <p>{{text}}</p>
+    <button (click)="deleteTodo(id)">Delete</button>
+</div>

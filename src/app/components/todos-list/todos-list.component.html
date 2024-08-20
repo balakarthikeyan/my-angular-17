@@ -1,0 +1,19 @@
+<p>todos-list works!</p>
+<h2>Todo List:</h2>
+<div>
+    <input #newTodoInput placeholder="Add a new todo" />
+    <button (click)="addTodo(newTodoInput.value)">Add</button>
+</div>
+<div>
+    @for (todo of (todos$ | async); track todo.id) {
+        <app-todo-item
+            [id]="todo.id"
+            [text]="todo.text"
+            [completed]="todo.completed"
+            (completeChange)="handleCompleteChange($event)"
+            (delete)="handleDeleteTodo($event)"/>
+    }
+    @empty {
+        No todos.
+    }
+</div>

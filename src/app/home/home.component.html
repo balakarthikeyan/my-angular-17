@@ -1,0 +1,67 @@
+<div class="container">
+    <section class="promotion">
+        <h2>ngFor</h2>
+        <ul>
+            <li *ngFor="let post of posts; index as i">
+                {{i}} - {{post.title}}
+            </li>
+        </ul>
+        <!-- For Directive -->
+        <h2>For</h2>
+        <ul>
+            @for (post of posts; track post; let index = $index; let first = $first, last = $last) {
+            <li [ngClass]="{ odd: index % 2 !== 0, even: index % 2 === 0 }">
+                {{index}} - {{post.title}}
+            </li>
+            } @empty {
+            <li>No records available !!</li>
+            }
+        </ul>
+        <!-- trackBy Directive -->
+        <h2>trackBy</h2>
+        <ul>
+            <li *ngFor="let item of tasks; trackBy: trackByFn">{{ item.name }}</li>
+        </ul>
+        <!-- If Directive -->
+        <h2>Switch</h2>
+        @switch (weather.condition) {
+        @case ("sunny") {
+        <div>It's a bright sunny day!</div>
+        }
+        @case ("rainy") {
+        <div>Don't forget your umbrella. It's raining outside!</div>
+        }
+        @case ("cloudy") {
+        <div>The sky is covered with clouds today.</div>
+        }
+        @default {
+        <div>Weather information not available.</div>
+        }
+        }
+    </section>
+
+    <!-- Content Projection -->
+    <section class="products">
+        @for (course of courses; track course) {
+        <app-course-card [course]="course">
+            <ng-container appThumbnailArea>
+                <img [src]="course.image" [alt]="course.title" />
+            </ng-container>
+            <div class="course-status">
+                New
+            </div>
+        </app-course-card>
+        }
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <!-- If Directive -->
+            @if (user.isLoggedIn) {
+            <div>Hello, {{ user.name }}! Great to see you again.</div>
+            } @else {
+            <div>Welcome, guest. Please sign in.</div>
+            }
+        </div>
+    </footer>
+</div>
