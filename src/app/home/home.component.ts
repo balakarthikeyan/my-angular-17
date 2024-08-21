@@ -6,11 +6,12 @@ import { CourseCardComponent } from '../components/course-card/course-card.compo
 import { Course } from '../interfaces/course';
 import { Post } from '../interfaces/post';
 import { LocaleSwitcherComponent } from '../components/locale-switcher/locale-switcher.component';
+import { SharedModule } from '../modules/shared.module';
 
 @Component({
     selector: 'app-home',
     standalone: true,
-    imports: [CommonModule, CourseCardComponent, LocaleSwitcherComponent],
+    imports: [CommonModule, CourseCardComponent, LocaleSwitcherComponent, SharedModule],
     templateUrl: './home.component.html',
     styleUrl: './home.component.css'
 })

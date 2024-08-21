@@ -135,9 +135,6 @@ export class DynamicFormComponent {
 		private router: Router
 	) {
 		this.buildRegisterForm();
-		this.registerForm.controls['firstname'].valueChanges.subscribe((value) => {
-			console.log("From DynamicFormComponent", value);
-		});
 	}
 
 	getFormControlsFields() {

@@ -1,0 +1,21 @@
+<form [formGroup]="form">
+    <p><strong>{{ label }}</strong></p>
+    <div>
+        <input type="search" formControlName="search" placeholder="Filter options">
+    </div>
+    <div>
+        <input type="checkbox" formControlName="selectAll"> Select All
+    </div>
+    <ng-container formArrayName="options">
+        <ul>
+            @for (group of filteredOptionsFormGroups(); track group.value) {
+            <li [formGroupName]="$index">
+                <label>
+                    <span>{{ group.value.label }}</span>
+                    <input type="checkbox" formControlName="checked">
+                </label>
+            </li>
+            }
+        </ul>
+    </ng-container>
+</form>

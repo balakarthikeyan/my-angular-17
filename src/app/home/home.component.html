@@ -1,6 +1,14 @@
 <app-locale-switcher></app-locale-switcher>
 <div class="container">
     <section class="promotion">
+        <h2>Translation</h2>
+        <h1 i18n>Hello world!</h1>
+        <h1 i18n="Friendly welcoming message">Hello our world!</h1>
+        <h1 i18n="Main Header|Friendly welcoming message@@mainHeader">Hello my world!</h1>
+        <p>
+            <a i18n i18n-href i18n-title href="en-US/todo" title="My Portfolio">Portfolio</a>
+        </p>
+        <p>{{ "welcome" | translate }}</p>
         <h2>ngFor</h2>
         <ul>
             <li *ngFor="let post of posts; index as i">

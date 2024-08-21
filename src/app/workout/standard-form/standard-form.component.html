@@ -22,7 +22,7 @@
     </div>
     <div class="form-field">
         <label>Password
-            <input type="password" formControlName="password" />
+            <input formControlName="password" type="passwordFormField"/>
         </label>
         <div class="text-red-400 text-sm" *ngIf="passwordFormField?.dirty">
             <span class="block" [ngClass]="{'text-primary': passwordFormField?.value?.match('^(?=.*[A-Z])')}">At least
@@ -60,13 +60,33 @@
     <fieldset>
         <legend>Login</legend>
         <div class="form-field">
-            <input name="email" formControlName="email">
+            <input name="email" type="text" formControlName="email">
         </div>
         <div class="form-field">
-            <input name="passwordFormField" formControlName="passwordFormField" type="passwordFormField">
+            <input name="password" type="password" formControlName="password">
         </div>
     </fieldset>
     <div class="form-buttons">
         <button class="button button-primary" (click)="login()">Login</button>
     </div>
+</form>
+
+<h1>Template-driven Form Example (with bi-directional data binding):</h1>
+<form #myForm="ngForm" (ngSubmit)="onSubmitTemplateBased(myForm.value)">
+    <p>
+        <label>Title:
+        <input type="text" name="title" [(ngModel)]="notes.title" required></label>
+    </p>
+    <p>
+        <label>Description:
+        <textarea [(ngModel)]="notes.description" name ="description" required></textarea></label>
+    </p>
+    <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
+    <div class="file-upload">
+        {{fileName || "No file uploaded yet."}}
+        <button color="primary" class="upload-btn" (click)="fileUpload.click()">Upload</button>
+    </div>
+    <p>
+        <button type="submit" [disabled]="!myForm.valid">Submit</button>
+    </p>
 </form>
