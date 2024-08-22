@@ -72,3 +72,11 @@
         </router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>
+
+<mat-form-field>
+	<mat-select [formControl]="foodForm" placeholder="Favorite food" multiple>
+		<mat-option *ngFor="let food of allfoods" [value]="food.value">
+			{{food.viewValue}}
+		</mat-option>
+	</mat-select>
+</mat-form-field>
