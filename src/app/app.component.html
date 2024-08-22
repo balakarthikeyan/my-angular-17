@@ -1,30 +1,19 @@
 <div class="container">
-    <header>
-        <div class="header-container">
-            <img src="https://via.placeholder.com/1296x100/66b7d2" alt="Robot Parts Banner" class="banner">
+    <app-header-banner></app-header-banner>
+    <app-header-menu></app-header-menu>
+    <router-outlet></router-outlet>
+    <router-outlet name="customers"></router-outlet>
+    <app-footer>
+        <div class='d-flex ml-auto'>
+            <div class="social">
+                <a href="https://www.facebook.com/"><img src="https://via.placeholder.com/24x24/11b7d2" alt="facebook" /></a>
+                <a href="https://twitter.com/"><img src="https://via.placeholder.com/24x24/ccb7d2" alt="twitter" /></a>
+                <a href="https://www.youtube.com"><img src="https://via.placeholder.com/24x24/33b7d2" alt="youtube" /></a>
+                <a href="https://www.linkedin.com/"><img src="https://via.placeholder.com/24x24/ffb7d2" alt="linkedin" /></a>
+            </div>
         </div>
-    </header>
-    <nav class="navbar navbar-expand-sm navbar-light bg-light">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item"><a class="nav-link" routerLink="home" routerLinkActive="active">Home</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="todo" routerLinkActive="active">Todo</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="articles" routerLinkActive="active">Articles</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="parent" routerLinkActive="active">Parent</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="child" routerLinkActive="active">Child</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="products" routerLinkActive="active">Products</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="http-example" routerLinkActive="active">Http Example</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="local-storage" routerLinkActive="active">Local Storage</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="standard-forms" routerLinkActive="active">Standard Form</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="dynamic-forms" routerLinkActive="active">Dynamic Form</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="directive" routerLinkActive="active">Directive</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="observables" routerLinkActive="active">Observables</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="bootstrap" routerLinkActive="active">Bootstrap</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="multi-forms" routerLinkActive="active">Form Component</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="test" routerLinkActive="active">Test</a></li>
-        </ul>
-    </nav>
+    </app-footer>
 </div>
-<router-outlet></router-outlet>
 <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="large" color="#fff" type="ball-beat" [fullScreen]="true">
     <p style="color: white"> Loading... </p>
 </ngx-spinner>

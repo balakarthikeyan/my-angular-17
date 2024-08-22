@@ -1,3 +1,16 @@
-<p>test works!</p>
-
 <hr [class]="size" />
+<div>
+    @if (primaryLabel) {
+    <h2>{{ primaryLabel }} </h2>
+    }
+    {{foodItem}}
+    <button (click)="dec()">-</button>
+    {{cartValue}}
+    <button (click)="inc()">+</button>
+</div>
+@if (secondaryLabel) {
+    <h3>{{ secondaryLabel }}</h3>
+}
+@if (thirdLabel) {
+    <strong>{{ thirdLabel }}</strong>
+}

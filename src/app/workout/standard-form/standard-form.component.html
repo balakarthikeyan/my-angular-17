@@ -50,10 +50,19 @@
             Password does'nt match.
         </div>
     </div>
+    <div class="form-field">
+        <select formControlName="country">
+            <option *ngFor="let country of countries" [value]="country.id">
+                {{ country.name }}
+            </option>
+        </select>
+    </div>
     <div class="form-buttons">
         <button class="button button-primary" type="submit" [disabled]="profileForm.invalid">Update</button>
     </div>
 </form>
+<p>Form value: </p>
+<pre>{{ profileForm.value | json }}</pre>
 
 <h1>Login Form</h1>
 <form [formGroup]="loginForm">
@@ -70,6 +79,8 @@
         <button class="button button-primary" (click)="login()">Login</button>
     </div>
 </form>
+<p>Form value: </p>
+<pre>{{ loginForm.value | json }}</pre>
 
 <h1>Template-driven Form Example (with bi-directional data binding):</h1>
 <form #myForm="ngForm" (ngSubmit)="onSubmitTemplateBased(myForm.value)">
@@ -81,12 +92,20 @@
         <label>Description:
         <textarea [(ngModel)]="notes.description" name ="description" required></textarea></label>
     </p>
+    <select [(ngModel)]="notes.countries" name="countries">
+        <option [ngValue]="null" disabled>Choose your country</option>
+        <option *ngFor="let country of countries" [ngValue]="country">
+            {{ country.name }}
+        </option>
+    </select>
     <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
     <div class="file-upload">
-        {{fileName || "No file uploaded yet."}}
+        {{notes.fileName || "No file uploaded yet."}}
         <button color="primary" class="upload-btn" (click)="fileUpload.click()">Upload</button>
     </div>
     <p>
         <button type="submit" [disabled]="!myForm.valid">Submit</button>
     </p>
 </form>
+<p>Form value: </p>
+<pre>{{ myForm.value | json }}</pre>

@@ -6,7 +6,9 @@ import { confirmPasswordValidator } from 'src/app/validators/confirm-password.va
 
 export type Notes = {
     title: string,
-    description: string
+    description: string,
+    fileName: string,
+    countries: string
 };
 
 @Component({
@@ -23,9 +25,26 @@ export class StandardFormComponent {
 
     notes: Notes = {
         title: '',
-        description: ''
+        description: '',
+        fileName: '',
+        countries: '',
     };
-	fileName = '';
+
+    countries = [
+        {
+            id: 'us',
+            name: 'United States'
+        },
+        {
+            id: 'uk',
+            name: 'United Kingdom'
+        },
+        {
+            id: 'ca',
+            name: 'Canada'
+        }
+    ];
+    selectedCountry = 'us';
 
     constructor(
         private formBuilder: FormBuilder,
@@ -65,6 +84,7 @@ export class StandardFormComponent {
             confirmPassword: new FormControl<string>('', {
                 validators: [Validators.required, confirmPasswordValidator],
             }),
+            country: new FormControl(this.selectedCountry)
         });
     }
 
@@ -91,19 +111,25 @@ export class StandardFormComponent {
     onSubmit() {
         if (this.profileForm.valid) {
             console.log(JSON.stringify(this.profileForm.value));
+            this.resetForm(this.profileForm);
         }
     }
 
+    resetForm(form: FormGroup) {
+		form.reset();
+	}
+    
     onSubmitTemplateBased(notes: any) {
         console.log(notes);
     }
 
     onFileSelected(event: any) {
-        const file:File = event.target.files[0];
+        const file: File = event.target.files[0];
         if (file) {
-            this.fileName = file.name;
+            this.notes.fileName = file.name;
             const formData = new FormData();
             formData.append("thumbnail", file);
+            console.log(formData);
         }
     }
 }

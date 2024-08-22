@@ -17,7 +17,7 @@
         </ul>
         <!-- For Directive -->
         <h2>For</h2>
-        <ul [ngStyle]="{ 'color': textColor, 'font-size': fontSize }">
+        <ul>
             @for (post of posts; track post; let index = $index; let first = $first, last = $last) {
             <li [ngClass]="{ odd: index % 2 !== 0, even: index % 2 === 0 }">
                 {{index}} - {{post.title}}
@@ -63,14 +63,4 @@
         }
     </section>
 
-    <footer>
-        <div class="footer-container">
-            <!-- If Directive -->
-            @if (user.isLoggedIn) {
-            <div>Hello, {{ user.name }}! Great to see you again.</div>
-            } @else {
-            <div>Welcome, guest. Please sign in.</div>
-            }
-        </div>
-    </footer>
 </div>

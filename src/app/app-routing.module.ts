@@ -22,18 +22,29 @@ import { BootstrapExampleComponent } from './workout/bootstrap-example/bootstrap
 import { MultipleSelectFormComponent } from './components/multiple-select-form/multiple-select-form.component';
 import { TestComponent } from './workout/test/test.component';
 import { TestChildComponent } from './workout/test-child/test-child.component';
+import { MaterialExampleComponent } from './workout/material-example/material-example.component';
 
 const routes: Routes = [
 	{ path: '', pathMatch: 'full', redirectTo: 'home' },
-	{ path: 'list', component: CustomerListComponent },
-	{ path: 'details/:id', component: CustomerDetailsComponent },
-	{ path: 'create', component: CustomerCreateComponent },
-	{ path: 'update', component: CustomerUpdateComponent },
+	{
+		path: 'customers',
+		children: [
+			{ path: 'list', title: 'Customer List', outlet: 'customers', component: CustomerListComponent },
+			{ path: 'details/:id', title: 'Customer Details', outlet: 'customers', component: CustomerDetailsComponent },
+			{ path: 'create', title: 'Add Customer', outlet: 'customers', component: CustomerCreateComponent },
+			{ path: 'update', title: 'Update Customer', outlet: 'customers', component: CustomerUpdateComponent },
+		],
+	},
 	{ path: 'home', component: HomeComponent },
 	{ path: 'todo', component: TodosListComponent },
 	{ path: 'articles', component: ArticleListComponent },
-	{ path: 'parent', component: ParentComponent },
-	{ path: 'child', component: ChildComponent },
+	{
+		path: 'parent',
+		children: [
+			{ path: '', title: 'Parent', component: ParentComponent },
+			{ path: 'child', title: 'Child', component: ChildComponent },
+		],
+	},
 	{ path: 'products', component: ProductsComponent },
 	{ path: 'http-example', component: HttpExampleComponent },
 	{ path: 'local-storage', component: LocalStorageExampleComponent },
@@ -47,10 +58,11 @@ const routes: Routes = [
 		path: 'test',
 		children: [
 			{ path: '', title: 'Parent', component: TestComponent },
-			{ path: 'child', title: 'Child', outlet: 'sidemenu', component: TestChildComponent },
+			{ path: 'child', title: 'Child', component: TestChildComponent },
 		],
 	},
 	{ path: 'dashboard', loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule) },
+	{ path: 'material', component: MaterialExampleComponent },
 	{
 		path: '**',
 		loadComponent: () => import('./components/page-not-found/page-not-found.component').then(mod => mod.PageNotFoundComponent)

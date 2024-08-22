@@ -13,7 +13,7 @@ import { OptionFormGroup } from 'src/app/models/optionformgroup';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MultipleSelectFormComponent {
-    readonly label = inject(new HostAttributeToken('label'));
+    readonly label = inject(new HostAttributeToken('label'), { optional: true });
     readonly optionLabelKey = inject(new HostAttributeToken('optionLabelKey'), { optional: true });
     readonly optionValueKey = inject(new HostAttributeToken('optionValueKey'), { optional: true });
     readonly options = input.required<any[]>();

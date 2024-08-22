@@ -1,2 +1,51 @@
-<p>test-child works!</p>
-<app-test size="big" />
+<h1>Default Input Attribute</h1>
+<app-test></app-test>
+
+<h1>Default HostAttributeToken</h1>
+<app-test size="medium" [cartValue]="burgers" [foodItem]="'Burger'" (changed)="burgersChanged($event)"
+    primaryLabel="Cart"></app-test>
+<app-test size="big" [cartValue]="pizzas" [foodItem]="'Pizza'" (changed)="pizzasChanged($event)"
+    secondaryLabel="Checkout"></app-test>
+<b>
+    <em>Total items: </em> {{totalItems | demo }} <br/>
+    <em>Total currency: </em> {{totalItems | customNumber : "currency" : "JPY" : "ja-JP" }}
+</b>
+
+<div>
+    <h1>Attribute Bindings</h1>
+    <table border="2" [cellPadding]="5" [cellSpacing]="5">
+        <tbody>
+            <tr>
+                <td [colSpan]="1 + 1" style="background-color: yellow;">2 cols</td>
+            </tr>
+            <tr>
+                <td>1 col</td>
+                <td>1 col</td>
+            </tr>
+            <tr>
+                <td [attr.colspan]="1 + 1" style="background-color: yellow;">2 cols</td>
+            </tr>
+        </tbody>
+    </table>
+    <h1>Event Bindings</h1>
+    <button (click)="greenStyle = !greenStyle">toggle</button>
+    <h1>Class Bindings</h1>
+    <p [class.green]="greenStyle" [class.red]="!greenStyle">Hello World !!</p>
+    <h1>Style Bindings</h1>
+    <p [style.color]="greenStyle ? 'green' : 'red'">Hello World !!</p>
+    <h1>Template expressions</h1>
+    <p> {{beverageInput.value}} </p>
+    <select #beverageInput (input)="0">
+        <option value="milo">Milo</option>
+        <option value="coke">Coke</option>
+        <option value="fanta">Fanta</option>
+    </select>
+    <h1>ngStyle directive</h1>
+    <p [ngStyle]="styles">Hello World !!</p>
+    <h1>Enum & ngSwitch directive</h1>
+    <button (click)="onEnumClick()">click me</button>
+    <div [ngSwitch]="enumValue">
+        <p *ngSwitchCase="enum.Yes">Yes Block</p>
+        <p *ngSwitchCase="enum.No">No Block</p>
+    </div>
+</div>

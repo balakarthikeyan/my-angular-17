@@ -12,6 +12,9 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HeaderBannerComponent } from './views/header-banner/header-banner.component';
+import { HeaderMenuComponent } from './views/header-menu/header-menu.component';
+import { FooterComponent } from './views/footer/footer.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -38,6 +41,9 @@ export function createTranslateLoader(http: HttpClient) {
       },
       defaultLanguage: 'en-US',
     }),
+    HeaderBannerComponent,
+    HeaderMenuComponent,
+    FooterComponent
   ],
   providers: [
     provideAnimationsAsync(),

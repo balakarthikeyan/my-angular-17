@@ -1,0 +1,21 @@
+<footer>
+    <div class="container-fluid">
+        <div class="d-flex ml-auto footer-container">
+            <div>
+                <!-- If Directive -->
+                @if (user.isLoggedIn) {
+                <div>Hello, {{ user.name }}! Great to see you again.</div>
+                } @else {
+                <div>Welcome, guest. Please sign in.</div>
+                }
+            </div>
+            <div class='mb-2 links'>
+                Terms of Use | Privacy Policy | Trademarks | License Agreements
+            </div>
+            <div class='copyright'>
+                Copyright &copy; 2024. All Rights Reserved.
+            </div>
+        </div>
+        <ng-content></ng-content> <!-- Content Projection -->
+    </div>
+</footer>

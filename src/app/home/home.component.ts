@@ -18,16 +18,8 @@ import { SharedModule } from '../modules/shared.module';
 
 export class HomeComponent implements AfterContentInit, OnInit, AfterViewInit {
 
-    textColor: string = 'white';
-    fontSize: string = '16px';
-
     posts: Post[] = [];
     users: any = [];
-
-    user = {
-        isLoggedIn: true,
-        name: 'John Joe',
-    };
 
     tasks = [
         { id: 1, name: 'Task 1', status: 'Pending' },
