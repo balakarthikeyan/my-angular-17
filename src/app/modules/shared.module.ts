@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-
-// import ngx-translate and the http loader
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { PageNotFoundComponent } from '../components/page-not-found/page-not-found.component';
 
 // required for AOT compilation
@@ -14,14 +12,13 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 }
 
 @NgModule({
-    declarations: [
-        
+    declarations: [],
+    exports: [
+        TranslateModule
     ],
     imports: [
         CommonModule,
         RouterModule,
-        // ngx-translate and the loader module
-        HttpClientModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
@@ -31,8 +28,6 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
         }),
         PageNotFoundComponent
     ],
-    exports: [
-        TranslateModule
-    ]
+    providers: [provideHttpClient(withInterceptorsFromDi())]
 })
 export class SharedModule { }
