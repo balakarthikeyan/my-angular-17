@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { SharedService } from 'src/app/services/shared.service';
 import { ChildComponent } from '../child/child.component';
 
@@ -10,8 +10,6 @@ import { ChildComponent } from '../child/child.component';
     styleUrl: './parent.component.css'
 })
 export class ParentComponent {
-
-    // @ViewChild(ChildComponent) childComponentRef: ChildComponent;
     
     @Input({
         required: true,
